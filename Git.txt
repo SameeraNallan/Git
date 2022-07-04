@@ -1,0 +1,135 @@
+>> Git is a distributed revision control and source code management system with an emphasis on speed. Git was initially designed and developed by Linus Torvalds for Linux kernel development. 
+Version Control System (VCS) is a software that helps software developers to work together and maintain a complete history of their work.
+Centralized version control system (CVCS) uses a central server to store all files and enables team collaboration. 
+distributed version control systems:DVCS clients not only check out the latest snapshot of the directory but they also fully mirror the repository. 
+If the sever goes down, then the repository from any client can be copied back to the server to restore it. 
+Every checkout is a full backup of the repository. 
+
+>> The developers needed to collaborate with other developers on other systems. The localized version control system failed in this case. 
+To deal with this problem, Centralized Version Control Systems were developed.
+These systems have a single server that contains the versioned files, and some clients to check out files from a central place.
+Centralized version control systems have many benefits, especially over local VCSs.
+Everyone on the system has information about the work what others are doing on the project.
+Administrators have control over other developers.
+It is easier to deal with a centralized version control system than a localized version control system.
+A local version control system facilitates with a server software component which stores and manages the different versions of the files.
+It also has the same drawback as in local version control system that it also has a single point of failure.
+
+Advantages of Git:
+Free and open source
+Fast and small
+Easier branching
+
+
+>> Step 1: You modify a file from the working directory.
+Step 2: You add these files to the staging area.
+Step 3: You perform commit operation that moves the files from the staging 
+area. After push operation, it stores the changes permanently to the Git 
+repository.
+
+First commit
+[bash]$ git add sort.c
+# adds file to the staging area
+[bash]$ git commit –m “Added sort operation”
+# Second commit
+[bash]$ git add search.c
+# adds file to the staging area
+[bash]$ git commit –m “Added search operation”
+
+Commit :
+ the current state of the repository. A commit is also named 
+by SHA1 hash. You can consider a commit object as a node of the linked list. 
+Every commit object has a pointer to the parent commit object.
+
+
+Clone
+Clone operation creates the instance of the repository. Clone operation not only 
+checks out the working copy, but it also mirrors the complete repository. Users
+can perform many operations with this local repository. The only time 
+networking gets involved is when the repository instances are being 
+synchronized.
+
+
+Pull
+Pull operation copies the changes from a remote repository instance to a local 
+one. The pull operation is used for synchronization between two repository 
+instances. This is same as the update operation in Subversion.
+
+
+Push:
+Push operation copies changes from a local repository instance to a remote one. 
+This is used to store the changes permanently into the Git repository. This is 
+same as the commit operation in Subversion.
+
+
+add
+:
+ some cases, you may want to change some of your existing files. In other cases, you may want to add untracked files to your repository.
+
+In both cases, you will need to use the same Git command : Git Add.
+
+The easiest way to add all files to your Git repository is to use the “git add” command followed by the “-A” option for “all”.
+
+$ git add -A                       
+
+$ git add .                        (at the root of your project folder)
+
+
+The git checkout command is used to switch between branches in a repository. 
+$ git checkout <branchname>
+
+>> list of most essential Git commands that are used daily.
+
+Git Config command
+Git init command
+Git clone command
+Git add command
+Git commit command
+Git status command
+Git push Command
+Git pull command
+Git Branch Command
+Git Merge Command
+Git log command
+Git remote command
+
+>> git log can use git diff to display each change in the history. git log is for displaying a set of revisions, potentially including the diff between each revision and its parent, while git diff is used for displaying the difference between any two revisions in your repository.
+git diff can also be used to display diffs between the current working copy and the staging area (also known as the "index"), and diffs between the staging area and a revision in your repository, usually HEAD, while git log will only ever show committed code.
+So, they do have a bit of overlap, but neither one is a subset of the other. 
+git log uses git diff for some forms of its display, and thus has the same options for setting how it calls git diff.
+
+>> Git branching allows developers to diverge from the production version of code to fix a bug or add a feature. Developers create branches to work with a copy of the code without modifying the existing version.
+You create branches to isolate your code changes, which you test before merging to the main branch (more on this later).
+There is nothing special about the main branch. It is the first branch made when you initialize a Git repository using the git initcommand.
+When you create a commit, Git identifies that snapshot of files with a unique SHA-1 hash. 
+When you initially create a branch, Git creates a new pointer to the same commit the main branch is currently on.
+Git knows which branch you have checked out by using a special pointer called HEAD. 
+When you create a new branch, Git doesn’t immediately change the HEAD pointer to the new branch. 
+This branching function is what makes Git really powerful. Multiple people create separate branches to work on their code and merge their changes into the main branch. 
+Branches are meant to be temporary and should be deleted when work is completed.
+
+>> The git stash command shelves changes you have made to your working copy so you can do another work, and then come back and re-apply them.
+The git stash takes uncommitted both staged and unstaged changes, saves them away for further use, and then returns them from your working copy. Firstly, you can run the git status so you can see the dirty state. 
+Then run git stash to stash the changes:
+The git stash pop removes the changes from your stash and re-applies them to your working copy.
+The alternate way is running git stash apply if you want to re-apply the changes and keep them in your stash:
+git status
+You can run git stash several times so as to create multiple stashes, and then run git stash list to view them. 
+By default, stashes are identified as a "WIP" – work in progress. 
+It comes on top of the branch and commits that you created the stash from.
+
+>> Git Fetch is the command that tells the local repository that there are changes available in the remote repository without bringing the changes into the local repository. 
+Git Pull on the other hand brings the copy of the remote directory changes into the local repository. 
+Using git fetch we get the information that there is some commit done in the remote repository. 
+With the help of just git pull command we directly fetched and merged our remote repository with the local repository.
+git pull = git fetch + git merge.
+
+>> git reset is used when we want to unstage a file and bring our changes back to the working directory. 
+git reset can also be used to remove commits from the local repository.
+git reset HEAD <filename>
+Whenever we unstage a file, all the changes are kept in the working area.
+Used in local repository.
+git revert is used to remove the commits from the remote repository.
+git revert removes the commit that we have done but adds one more commit which tells us that the revert has been done.
+Used in the remote repository.
+
